@@ -1,2 +1,2 @@
-# mobile_boilerplate
+# Mobile boilerplate
 Mobile Boilerplate with Flutter
