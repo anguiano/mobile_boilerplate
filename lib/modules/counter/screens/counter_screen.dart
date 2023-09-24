@@ -14,10 +14,11 @@ class _CounterScreenState extends State<CounterScreen> {
   @override
   Widget build(BuildContext context) {
     const title = Text("Counter Screen");
+    var label = counter == 1 ? "Click" : "Clicks";
 
-    const labelClick = Text(
-      "Total clicks",
-      style: TextStyle(
+    var labelClick = Text(
+      label,
+      style: const TextStyle(
         fontSize: 25,
         fontWeight: FontWeight.w100,
         color: Color.fromARGB(123, 123, 0, 123)
