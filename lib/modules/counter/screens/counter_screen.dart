@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:mobile_boilerplate/core/widgets/buttons/gc_icon_button_widget.dart";
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
@@ -52,30 +53,22 @@ class _CounterScreenState extends State<CounterScreen> {
         counter--;
       });
     }
+
+    void onRestartButton() {
+      setState(() {
+        counter = 0;
+      });
+    }
     
-    const plusIconButton = Icon(Icons.plus_one);
-    const minusIconButton = Icon(Icons.exposure_minus_1);
-
-    var plusOneButton = FloatingActionButton(
-      shape: const StadiumBorder(),
-      onPressed: onPlusOneButton,
-      child: plusIconButton,
-    );
-    var minusOneButton = FloatingActionButton(
-      shape: const StadiumBorder(),
-      onPressed: onMinusOneButton,
-      child: minusIconButton,
-    );
-
+    var plusOneButton = GcIconButton(Icons.plus_one, onPlusOneButton);
+    var minusOneButton = GcIconButton(Icons.exposure_minus_1, onMinusOneButton);
+    var restartButton = GcIconButton(Icons.refresh_rounded, onRestartButton);
+    
     var appBar = AppBar(
       title: title,
       leading: IconButton(
         icon: const Icon(Icons.refresh_rounded),
-        onPressed: () {
-          setState(() {
-            counter = 0;
-          });
-        },
+        onPressed: onRestartButton,
       ),
       actions: [
         IconButton(
@@ -95,6 +88,8 @@ class _CounterScreenState extends State<CounterScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          restartButton,
+          const SizedBox(height: 20),
           plusOneButton,
           const SizedBox(height: 20),
           minusOneButton,
