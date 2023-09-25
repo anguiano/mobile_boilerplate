@@ -59,6 +59,12 @@ class _CounterScreenState extends State<CounterScreen> {
         counter = 0;
       });
     }
+
+    void onBy100Button() {
+      setState(() {
+        counter += 100;
+      });
+    }
     
     var plusOneButton = GcIconButton(Icons.plus_one, onPlusOneButton);
     var minusOneButton = GcIconButton(Icons.exposure_minus_1, onMinusOneButton);
@@ -66,19 +72,10 @@ class _CounterScreenState extends State<CounterScreen> {
     
     var appBar = AppBar(
       title: title,
-      leading: IconButton(
-        icon: const Icon(Icons.refresh_rounded),
-        onPressed: onRestartButton,
-      ),
+      leading: GcIconButton(Icons.refresh_rounded, onRestartButton, display: "none"),
       actions: [
-        IconButton(
-        icon: const Icon(Icons.upload_sharp),
-        onPressed: () {
-          setState(() {
-            counter = 100;
-          });
-        },
-      )],
+        GcIconButton(Icons.upload_sharp, onBy100Button, display: "none"),
+      ],
     );
     var body = Center(child: column);
 
