@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
+import "package:mobile_boilerplate/core/widgets/buttons/gc_button_widget.dart";
 import "package:mobile_boilerplate/core/widgets/buttons/gc_icon_button_widget.dart";
+import "dart:developer" as developer;
+
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
@@ -34,11 +37,16 @@ class _CounterScreenState extends State<CounterScreen> {
       )
     ,);
 
+    void debug(param) {
+      developer.log("debug::$param");
+    }
+
     var column = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         labelClick,
-        totalClicks
+        totalClicks,
+        GcButton("Click me", debug)
       ],
     );
 
